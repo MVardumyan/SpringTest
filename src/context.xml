@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-lazy-init="true"
+>
+
+    <!-- for inheritence -->
+    <bean id="baseModel" class="Computers.Mik_Comp"  abstract="true" init-method="init" destroy-method="destroy">
+        <constructor-arg ref="i5" index="0"/>
+        <constructor-arg ref="asus_ram" index="1"/>
+        <constructor-arg ref="gtx970" index="2"/>
+    </bean>
+
+    <bean id="mik_comp" depends-on="db" parent="baseModel" scope="prototype">
+        <!-- for method replacement -->
+        <!--<replaced-method name="start" replacer="replacer"/>-->
+        <constructor-arg name="price" value="370000" index="3"/>
+    </bean>
+
+    <bean id="mik_comp_2" parent="baseModel">
+        <constructor-arg ref="gtx1060" index="2"/>
+        <constructor-arg name="price" value="320000" index="3"/>
+    </bean>
+
+    <!-- for collection injection -->
+    <bean id="compMap" class="Collection.ComputerMap">
+        <property name="compCollection">
+            <map>
+                <entry key="#{mik_comp.price}" value-ref="mik_comp"/>
+                <entry key="#{mik_comp_2.price}" value-ref="mik_comp_2"/>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="i5" class="Products.Intel_i5" />
+    <bean id="gtx970" class="Products.GeForce970" />
+    <bean id="asus_ram" class="Products.ASUS_RAM" />
+    <bean id="gtx1060" class="Products.GeForce1060" />
+
+    <!-- for method injection -->
+    <bean id="conveyor" class="App.MikConveyor">
+        <lookup-method name="createComputer" bean="mik_comp"/>
+    </bean>
+
+    <!-- for method replacement -->
+    <bean id="replacer" class="App.StartReplacer"/>
+
+    <!-- for dependency -->
+    <bean id="db" class="App.Database"/>
+
+    <!-- for post processing (bean Life Cycle illustration) -->
+    <bean class="App.MyBeanPostProcessor"/>
+
+</beans>
