@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
        default-lazy-init="true"
 >
@@ -23,7 +23,7 @@
         <constructor-arg name="price" value="320000" index="3"/>
     </bean>
 
-    <!-- for collection injection -->
+    <!--for collection injection -->
     <bean id="compMap" class="Collection.ComputerMap">
         <property name="compCollection">
             <map>
@@ -51,5 +51,13 @@
 
     <!-- for post processing (bean Life Cycle illustration) -->
     <bean class="App.MyBeanPostProcessor"/>
+
+    <bean id="logging" class="Aspects.Log"/>
+
+    <aop:config proxy-target-class="true">
+        <aop:aspect id="log" ref="logging">
+            <aop:before method="log" pointcut="execution(* Computers.Mik_Comp.start(..))"/>
+        </aop:aspect>
+    </aop:config>
 
 </beans>

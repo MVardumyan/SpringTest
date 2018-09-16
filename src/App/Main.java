@@ -12,9 +12,9 @@ public class Main {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 //        Mik_Comp comp = (Mik_Comp) context.getBean("mik_comp");
-//        MikConveyor conveyor = (MikConveyor) context.getBean("conveyor");
-//        Mik_Comp comp = (Mik_Comp) conveyor.createComputer();
-//
+////      MikConveyor conveyor = (MikConveyor) context.getBean("conveyor");
+////      Mik_Comp comp = (Mik_Comp) conveyor.createComputer();
+
 //        comp.start();
 //        comp.destroy();
 
