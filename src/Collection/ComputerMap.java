@@ -1,5 +1,6 @@
 package Collection;
 
+import Aspects.ForLog;
 import Computers.Mik_Comp;
 
 import java.util.Map;
@@ -21,6 +22,7 @@ public class ComputerMap {
         return compCollection;
     }
 
+    @ForLog
     public void start() {
         for(Map.Entry<Integer, Mik_Comp> entry: compCollection.entrySet())
             entry.getValue().start();

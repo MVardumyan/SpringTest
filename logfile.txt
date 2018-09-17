@@ -1,0 +1,27 @@
+=====
+Mon Sep 17 12:06:00 AMT 2018
+Method void Computers.Mik_Comp.start() processed in 0 ms
+=====
+Mon Sep 17 12:06:00 AMT 2018
+Method void Computers.Mik_Comp.start() processed in 1 ms
+=====
+Mon Sep 17 12:06:00 AMT 2018
+Method void Collection.ComputerMap.start() processed in 13 ms
+=====
+Mon Sep 17 13:07:55 AMT 2018
+Method void Computers.Mik_Comp.start() processed in 1 ms
+=====
+Mon Sep 17 13:07:55 AMT 2018
+Method void Computers.Mik_Comp.start() processed in 1 ms
+=====
+Mon Sep 17 13:07:55 AMT 2018
+Method void Collection.ComputerMap.start() processed in 61 ms
+=====
+Mon Sep 17 13:24:51 AMT 2018
+Method void Computers.Mik_Comp.start() processed in 0 ms
+=====
+Mon Sep 17 13:24:51 AMT 2018
+Method void Computers.Mik_Comp.start() processed in 0 ms
+=====
+Mon Sep 17 13:24:51 AMT 2018
+Method void Collection.ComputerMap.start() processed in 36 ms

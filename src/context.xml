@@ -50,13 +50,13 @@
     <bean id="db" class="App.Database"/>
 
     <!-- for post processing (bean Life Cycle illustration) -->
-    <bean class="App.MyBeanPostProcessor"/>
+    <!--<bean class="App.MyBeanPostProcessor"/>-->
 
-    <bean id="logging" class="Aspects.Log"/>
+    <bean id="logger" class="Aspects.Logger"/>
 
     <aop:config proxy-target-class="true">
-        <aop:aspect id="log" ref="logging">
-            <aop:before method="log" pointcut="execution(* Computers.Mik_Comp.start(..))"/>
+        <aop:aspect id="log" ref="logger">
+            <aop:around method="log" pointcut="execution(* *.start(..)) and @annotation(Aspects.ForLog))"/>
         </aop:aspect>
     </aop:config>
 

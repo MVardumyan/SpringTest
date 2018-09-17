@@ -1,5 +1,6 @@
 package Computers;
 
+import Aspects.ForLog;
 import Interfaces.*;
 
 /**
@@ -54,6 +55,7 @@ public class Mik_Comp implements Computer {
     }
 
     @Override
+    @ForLog
     public void start() {
         processor.calculate();
         ram.store();
